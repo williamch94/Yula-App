@@ -18,7 +18,6 @@ router.get('/api/locations', function(req, res, next) {
         if (err) throw err;
         var name = result[0];
         db.close();
-        res.writeHead(200, { 'Content-Type': 'application/json' });
         res.send(name);
     });
 });
