@@ -11,7 +11,6 @@ var users = require('./routes/users');
 var app = express();
 
 // Database
-var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('mongodb://general:general@ds151242.mlab.com:51242/yuladb');
 

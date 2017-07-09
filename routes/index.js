@@ -27,7 +27,6 @@ router.get('/api/test', function(req, res, next) {
     var parsed_url = url_module.parse(req.url, true);
 
     var db = req.database;
-    var collection = db.collection(table_name);
     var myobj = { id: "123", lat:"222", lng:"333", userid: "567" };
     db.collection(table_name).insertOne(myobj, function(err, res) {
         if (err) throw err;
