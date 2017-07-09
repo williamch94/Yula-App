@@ -13,7 +13,7 @@ var app = express();
 // Database
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/mydatabase');
+var db = monk('mongodb://general:general@ds151242.mlab.com:51242/yuladb');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
