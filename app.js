@@ -10,6 +10,11 @@ var users = require('./routes/users');
 
 var app = express();
 
+// Database
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/mydatabase');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -21,6 +26,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Make db accessible to our router
+app.use(function(req,res,next){
+    req.database = db;
+    next();
+});
 
 app.use('/', index);
 app.use('/users', users);
