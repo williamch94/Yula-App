@@ -11,8 +11,10 @@ var users = require('./routes/users');
 var app = express();
 
 // Database
+var db_url = 'mongodb://general:general@ds151242.mlab.com:51242/yuladb';
 var monk = require('monk');
-var db = monk('mongodb://general:general@ds151242.mlab.com:51242/yuladb');
+var db = monk(db_url);
+var mongo = require('mongodb').MongoClient;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,6 +31,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Make db accessible to our router
 app.use(function(req,res,next){
     req.database = db;
+    req.mongo = mongo;
+    req.db_url = db_url;
     next();
 });
 
