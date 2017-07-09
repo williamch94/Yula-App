@@ -27,9 +27,9 @@ router.get('/api/addLocation', function(req, res, next) {
     var mongo = req.mongo;
     var db_url = req.db_url;
 
-    var p_lat = parsed_url.lat;
-    var p_lng = parsed_url.lng;
-    var p_userid = parsed_url.userid;
+    var p_lat = parsed_url.query.lat;
+    var p_lng = parsed_url.query.lng;
+    var p_userid = parsed_url.query.userid;
 
     var location = {lat:p_lat, lng:p_lng, userid: p_userid };
 
