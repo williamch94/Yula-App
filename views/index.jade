@@ -1,22 +1,38 @@
 extends layout
 
 block content
-  table.mdl-data-table.mdl-js-data-table(style='width:100%;')
-    thead
-      tr
-        th.mdl-data-table__cell--non-numeric API
-        th.mdl-data-table__cell--non-numeric Status
-        th Platform
-        th.mdl-data-table__cell--non-numeric Type
-    tbody
-      tr
-        td.mdl-data-table__cell--non-numeric GEO_MARKERS
-        td.mdl-data-table__cell--non-numeric DEV
-        td UNIVERSAL
-        td.mdl-data-table__cell--non-numeric REST
-      tr
-        td.mdl-data-table__cell--non-numeric CHAT
-        td.mdl-data-table__cell--non-numeric DEV
-        td UNIVERSAL
-        td.mdl-data-table__cell--non-numeric REST
-
+    script.
+      function showToast(message) {
+            var snackbarContainer = document.querySelector('#toast_bar');
+            'use strict';
+            var data = {message: message};
+            snackbarContainer.MaterialSnackbar.showSnackbar(data);
+      }
+    script.
+      function T1() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function () {
+              if (this.readyState == 4 && this.status == 200) {
+                  showToast('Server response: '+this.responseText);
+              }
+          };
+          xhttp.open("GET", "/api/test/user_count", true);
+          xhttp.send();
+      }
+    table.mdl-data-table.mdl-js-data-table(style='width:100%;')
+      thead
+        tr
+          th.mdl-data-table__cell--non-numeric API
+          th.mdl-data-table__cell--non-numeric Status
+          th.mdl-data-table__cell--non-numeric Platform
+          th.mdl-data-table__cell--non-numeric
+      tbody
+        tr
+          td.mdl-data-table__cell--non-numeric /api/test/user_count
+          td.mdl-data-table__cell--non-numeric DEV
+          td.mdl-data-table__cell--non-numeric UNIVERSAL
+          td.mdl-data-table__cell--non-numeric
+            button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--accent(onclick='T1();') TEST
+    #toast_bar.mdl-js-snackbar.mdl-snackbar
+      .mdl-snackbar__text
+      button.mdl-snackbar__action(type='button')
