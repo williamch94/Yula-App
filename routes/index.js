@@ -39,7 +39,7 @@ router.get('/api/test/user_count', function (req, res, next) {
     });
 });
 
-router.get('/api/add_location', function (req, res, next) {
+router.get('/api/add_tag', function (req, res, next) {
 
     var parsed_url = url_module.parse(req.url, true);
 
@@ -48,14 +48,18 @@ router.get('/api/add_location', function (req, res, next) {
 
     var p_lat = parsed_url.query.lat;
     var p_lng = parsed_url.query.lng;
-    var p_userid = parsed_url.query.userid;
+    var p_userid = parsed_url.query.user_id;
+    var p_tagid = parsed_url.query.tag_id;
+    var p_description = parsed_url.query.tag_description;
+    var p_status = parsed_url.query.tag_status;
+    var p_date = parsed_url.query.tag_date;
 
-    var location = {lat: p_lat, lng: p_lng, userid: p_userid};
+    var tag = {lat: p_lat, lng: p_lng, userid: p_userid, tagid:p_tagid, description: p_description, status: p_status, date:p_date};
 
     mongo.connect(db_url, function (err, db) {
         if (err) throw err;
 
-        db.collection(geotags_table_name).insertOne(location, function (err, res) {
+        db.collection(geotags_table_name).insertOne(tag, function (err, res) {
             if (err) throw err;
             db.close();
         });
