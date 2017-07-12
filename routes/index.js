@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
 });
 
 /* GET Locations API */
-router.get('/api/locations', function (req, res, next) {
+router.get('/api/tags', function (req, res, next) {
 
     var db = req.database;
     var collection = db.collection(geotags_table_name);
