@@ -71,7 +71,7 @@ router.get('/api/add_tag', function (req, res, next) {
             if (err) throw err;
             db.close();
         });
-        res.send('Inserted!');
+        res.send('0');
     });
 });
 
@@ -105,7 +105,7 @@ router.get('/api/add_user', function (req, res, next) {
             if (err) throw err;
             db.close();
         });
-        res.send('User added!');
+        res.send('0');
     });
 });
 
