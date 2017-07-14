@@ -136,7 +136,7 @@ router.get('/api/login', function (req, res, next) {
 
             db.close();
 
-            res.send('0');
+            res.send(result);
         });
 
     });
