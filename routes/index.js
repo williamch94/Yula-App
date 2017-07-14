@@ -88,6 +88,7 @@ router.get('/api/add_user', function (req, res, next) {
     var p_last_name = parsed_url.query.last_name;
     var p_user_id = parsed_url.query.user_id;
     var p_rating = 0;
+    var p_phone_number = parsed_url.query.phone_number;
 
     var user = {
         email: p_email,
@@ -95,7 +96,8 @@ router.get('/api/add_user', function (req, res, next) {
         last_name: p_last_name,
         user_id: p_user_id,
         rating: p_rating,
-        password: p_password
+        password: p_password,
+        phone_number:p_phone_number
     };
 
     mongo.connect(db_url, function (err, db) {
