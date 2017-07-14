@@ -39,6 +39,8 @@ router.get('/api/test/user_count', function (req, res, next) {
     });
 });
 
+
+
 router.get('/api/add_tag', function (req, res, next) {
 
     var parsed_url = url_module.parse(req.url, true);
@@ -108,6 +110,35 @@ router.get('/api/add_user', function (req, res, next) {
             db.close();
         });
         res.send('0');
+    });
+});
+
+router.get('/api/login', function (req, res, next) {
+
+    var parsed_url = url_module.parse(req.url, true);
+
+    var mongo = req.mongo;
+    var db_url = req.db_url;
+
+    var p_email = parsed_url.query.user_email;
+    var p_password = parsed_url.query.user_password;
+
+    var login_request = {
+        email:p_email,
+        password:p_password
+    };
+
+    mongo.connect(db_url, function (err, db) {
+        if (err) throw err;
+
+        db.collection(users_table_name).find({email: login_request.email, password:login_request.password}, {}, function (err, result) {
+            if (err) throw err;
+
+            db.close();
+
+            res.send('0');
+        });
+
     });
 });
 
