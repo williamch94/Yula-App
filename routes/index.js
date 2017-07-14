@@ -131,7 +131,7 @@ router.get('/api/login', function (req, res, next) {
     mongo.connect(db_url, function (err, db) {
         if (err) throw err;
 
-        db.collection(users_table_name).find({email: login_request.email, password:login_request.password}, {}, function (err, result) {
+        db.collection(users_table_name).find({email: login_request.email, password:login_request.password}).toArray(function (err, result) {
             if (err) throw err;
 
             db.close();
