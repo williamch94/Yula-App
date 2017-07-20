@@ -54,7 +54,7 @@ router.post('/test', function (req, res, next) {
             }
         ]
     };
-    res.send(nobody);
+    res.send(somebody);
 });
 
 router.get('/api/test/user_count', function (req, res, next) {
