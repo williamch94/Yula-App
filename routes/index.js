@@ -27,7 +27,7 @@ router.get('/api/tags', function (req, res, next) {
     });
 });
 
-router.get('/test', function (req, res, next) {
+router.post('/test', function (req, res, next) {
     var response = {"text":"IT WORKS"};
     res.send(response);
 
