@@ -27,6 +27,12 @@ router.get('/api/tags', function (req, res, next) {
     });
 });
 
+router.get('/test', function (req, res, next) {
+    var response = {"text":"IT WORKS"};
+    res.send(response);
+
+});
+
 router.get('/api/test/user_count', function (req, res, next) {
     var db = req.database;
     var collection = db.collection(users_table_name);
