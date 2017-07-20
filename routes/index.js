@@ -28,7 +28,19 @@ router.get('/api/tags', function (req, res, next) {
 });
 
 router.post('/test', function (req, res, next) {
-    var response = {"text":"IT WORKS"};
+    var response = {
+        "attachments": [
+            {
+                "title": "Hello!",
+                "pretext": "Pretext _supports_ mrkdwn",
+                "text": "It *really works!*",
+                "mrkdwn_in": [
+                    "text",
+                    "pretext"
+                ]
+            }
+        ]
+    };
     res.send(response);
 
 });
