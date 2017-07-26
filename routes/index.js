@@ -7,7 +7,7 @@ var users_table_name = 'users';
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('index', {title: 'Yula Server App'});
+    res.render('index', {title: 'Yula Server'});
 });
 
 /* GET Locations API */
