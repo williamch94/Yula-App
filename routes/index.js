@@ -5,6 +5,10 @@ var url_module = require('url');
 var geotags_table_name = 'geotags';
 var users_table_name = 'users';
 
+router.get('/api/add_user', function (req, res, next) {
+  res.send(JSON.stringify(req));
+});
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('index', {title: 'Yula Server'});
@@ -27,36 +31,6 @@ router.get('/api/tags', function (req, res, next) {
     });
 });
 
-router.post('/test', function (req, res, next) {
-    var somebody = {
-        "attachments": [
-            {
-                "fallback": "Required plain-text summary of the attachment.",
-                "color": "#36a64f",
-                "pretext": "Somebody is inside",
-                "title": "Slack API Documentation",
-                "text": "Nobody is inside",
-                "image_url": "https://media.giphy.com/media/l0MYEn6GqCW03KBG0/giphy.gif",
-                "ts": 123456789
-            }
-        ]
-    };
-    var nobody = {
-        "attachments": [
-            {
-                "fallback": "Required plain-text summary of the attachment.",
-                "color": "#ff1018",
-                "pretext": "Nobody is inside",
-                "title": "Slack API Documentation",
-                "text": "Nobody is inside",
-                "image_url": "http://i.imgur.com/tx6hbg0.gif",
-                "ts": 123456789
-            }
-        ]
-    };
-    res.send(somebody);
-});
-
 router.get('/api/test/user_count', function (req, res, next) {
     var db = req.database;
     var collection = db.collection(users_table_name);
@@ -68,8 +42,6 @@ router.get('/api/test/user_count', function (req, res, next) {
         res.send(result.length + "");
     });
 });
-
-
 
 router.get('/api/add_tag', function (req, res, next) {
 
